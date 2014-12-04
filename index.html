@@ -1,0 +1,566 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>Itris Documentos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="css/img.css" />
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="js/img.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/mipropiojava.js"></script>
+	
+<script type="text/javascript">
+(function( $, window, undefined ) {
+    $.widget( "mobile.listview", $.mobile.listview, {
+        options: {
+            childPages: true,
+            page: "<div data-role='page'></div>",
+            header: "<div data-role='header'><a href='#' data-rel='back'>Back</a><h1></h1></div>",
+            content: "<div class='ui-content'></div>"
+        },
+        _create: function(){
+            this._super();
+            if( this.options.childPages ) {
+                this._setupChildren();
+            }
+        },
+        _setupChildren: function() {
+            this._attachBindings();
+            this.element.find( "ul" )
+                .css( "display","none" )
+                .parent()
+                .addClass("ui-btn ui-btn-icon-right ui-icon-carat-r");
+        },
+        _attachBindings: function() {
+            this._on({
+                "click": "_handleSubpageClick"
+            });
+            this._on( "body", {
+                "pagechange": function(){
+                    if ( this.opening === true ) {
+                        this.open = true;
+                        this.opening = false;
+                    } else if ( this.open === true ) {
+                        this.newPage.remove();
+                        this.open = false;
+                    }
+                }
+            });
+        },
+        _handleSubpageClick: function( event ) {
+            if( $(event.target).closest( "li" ).children( "ul" ).length == 0 ) {
+                return;
+            }
+            this.opening = true;
+            this.newPage = $( this.options.page ).uniqueId();
+            this.nestedList  = $( event.target ).children( "ul" )
+                .clone().attr( "data-" + $.mobile.ns + "role", "listview" )
+                .css( "display", "block" );
+            this.pageName = (
+                $( event.target.childNodes[0] ).text().replace(/^\s+|\s+$/g, '').length > 0 )?
+                $( event.target.childNodes[0] ).text() : $( event.target.childNodes[1] ).text();
+            this.pageID = this.newPage.attr( "id" );
+            // Build new page
+            this.newPage.append(
+                $( this.options.header ).find( "h1" ).text( this.pageName ).end()
+            ).append(
+                $( this.options.content )
+            ).find( "div.ui-content" ).append( this.nestedList );
+            $( "body" ).append( this.newPage );
+            $( "body" ).pagecontainer( "change", "#" + this.pageID );
+        }
+    });
+})( jQuery, this );
+
+	</script>
+	<script language="javascript" src="js/jquery-1.3.min.js"></script>
+    <script language="javascript">
+      $(document).ready(function() {
+       $().ajaxStart(function() {
+        $('#loading27').show();
+        $('#result').hide();
+        }).ajaxStop(function() {
+        $('#loading27').hide();
+        $('#result').fadeIn('slow');
+        });
+      $('#form, #fat, #fo3').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                $('#result').html(data);
+            }
+        })  
+        return false;
+         }); 
+        })  
+    </script>
+
+    <script language="javascript">
+      $(document).ready(function() {
+       $().ajaxStart(function() {
+        $('#loading28').show();
+        $('#resultado28').hide();
+        }).ajaxStop(function() {
+        $('#loading28').hide();
+        $('#resultado28').fadeIn('slow');
+        });
+      $('#form, #fat, #int28').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                $('#resultado28').html(data);
+            }
+        })  
+        return false;
+         }); 
+        })  
+    </script>
+
+
+    <script language="javascript">
+      $(document).ready(function() {
+       $().ajaxStart(function() {
+        $('#loadingerp27').show();
+        $('#resultadoerp27').hide();
+        }).ajaxStop(function() {
+        $('#loadingerp27').hide();
+        $('#resultadoerp27').fadeIn('slow');
+        });
+      $('#form, #fat, #formerp27').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                $('#resultadoerp27').html(data);
+            }
+        })  
+        return false;
+         }); 
+        })  
+    </script>
+
+    <script language="javascript">
+      $(document).ready(function() {
+       $().ajaxStart(function() {
+        $('#loadingerp28').show();
+        $('#resultadoerp28').hide();
+        }).ajaxStop(function() {
+        $('#loadingerp28').hide();
+        $('#resultadoerp28').fadeIn('slow');
+        });
+      $('#form, #fat, #formerp28').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                $('#resultadoerp28').html(data);
+            }
+        })  
+        return false;
+         }); 
+        })  
+    </script>
+	
+	
+	    <script language="javascript">
+      $(document).ready(function() {
+       $().ajaxStart(function() {
+        $('#loadingmail').show();
+        $('#resultadomail').hide();
+        }).ajaxStop(function() {
+        $('#loadingmail').hide();
+        $('#resultadomail').fadeIn('slow');
+        });
+      $('#form, #fat, #formcontactoapp').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                $('#resultadomail').html(data);
+            }
+        })  
+        return false;
+         }); 
+        })  
+    </script>
+	
+<style>
+#loading27{
+display: none;
+}
+#loading28{
+display: none;
+}
+#loadingerp27{
+display: none;
+}
+#loadingerp28{
+display: none;
+}
+#loadingmail{
+display: none;
+}
+
+</style>
+</head>
+
+<body onload="onBodyLoad()">
+
+
+		<!-- Inicio primera página -->
+		<div data-role="page" id="home" data-theme="b">
+
+			<div data-role="header" align="center" data-position="fixed">
+			<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+		            <ul>
+		                <li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a href="#integra" data-icon="action">Integra</a></li>
+		                <li><a href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+		            </ul>
+        		</div><!-- /navbar -->
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true" data-theme="a">
+				    <li><a href="#nosotros">Nosotros</a></li>
+				    <li><a href="#integra">Integra</a></li>
+				    <li><a href="#erp">ERP</a></li>
+				    <li><a href="#contacto">Contacto</a></li>
+				</ul>
+			  
+			<div id="resultado">
+				<p>Itris Sofware</p>
+	        </div>
+			
+
+				
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center">
+				<h4>Itris Sofware</h4>
+			</div><!-- /footer -->
+		</div><!-- /Fin primera página -->
+
+
+		<!-- Inicio de segunda página -->
+		<div data-role="page" id="nosotros" >
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+		            <ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>
+						<li><a class="ui-btn-active" href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a href="#integra" data-icon="action">Integra</a></li>
+		                <li><a href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+		            </ul>
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content" data-theme="a" align="center">
+				
+				<img src="img/cia_gral_soft.png" >
+			<p align="left">
+				<b>Compa&ntilde;&iacute;a General de Software</b> naci&oacute; en Mayo de 2000, conducida por reconocidos expertos en Tecnolog&iacute;a de Informaci&oacute;n (IT) e Ingenier&iacute;a de Software con m&aacute;s de 15 a&ntilde;os de experiencia en estas &aacute;reas.
+				<br>
+                Proveemos soluciones de software que ayudan a nuestros clientes a evolucionar en su negocio, responder r&aacute;pidamente a nuevas oportunidades y estar siempre un paso adelante de sus competidores.
+                <br>
+                Desarrollamos e implementamos soluciones de software flexibles y altamente estandarizadas, las cuales le permiten la optimizaci&oacute;n de los procesos de negocio de su Empresa.
+                <br>
+                Las soluciones proveen a nuestros clientes ventajas competitivas: disminuyen visiblemente los costos por proceso, mejoran los v&iacute;nculos con sus clientes, integran y fortalecen los canales de distribuci&oacute;n existentes.
+                <br>
+                Dise&ntilde;amos soluciones para un amplio rango de aplicaciones: desde simples sistemas para grupos de trabajo hasta complejos proyectos B2B.
+                <br>
+				Nuestras soluciones de software garantizan la seguridad de la inversi&oacute;n y un mayor retorno de la misma, gracias a una arquitectura modular y al uso de los est&aacute;ndares existentes en la industria.
+			</p>
+
+			</div><!-- /content -->
+
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /Fin segunda página -->
+
+
+
+		<!-- Start 3 -->
+		<div data-role="page" id="integra" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>    
+						<li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a class="ui-btn-active" href="#integra" data-icon="action">Integra</a></li>
+		                <li><a href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+				
+				<a class="ui-shadow ui-btn ui-corner-all" href="#integra28">Versi&oacute;n 2.8</a>
+				<a class="ui-shadow ui-btn ui-corner-all" href="#integra27">Versi&oacute;n 2.7</a>
+							
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 3 -->
+
+
+		<!-- Start 4 -->
+		<div data-role="page" id="erp" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+					    <li><a href="#home" data-icon="home">Home</a></li>
+		                <li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a href="#integra" data-icon="action">Integra</a></li>
+		                <li><a class="ui-btn-active" href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+				<a class="ui-shadow ui-btn ui-corner-all" href="#erp28">Versi&oacute;n ERP 2.8</a>
+				<a class="ui-shadow ui-btn ui-corner-all" href="#erp27">Versi&oacute;n ERP 2.7</a>
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 4 -->
+
+
+		<!-- Start 5 -->
+		<div data-role="page" id="contacto" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a href="#integra" data-icon="action">Integra</a></li>
+		                <li><a href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a class="ui-btn-active" href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+			<h1><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-mail ui-btn-icon-notext"></a> Contactese con nosotros</h1>
+<hr>
+			<form role="form" method="POST" rel="external" data-ajax="false" action="http://www.leocondori.com.ar/its/contacto.php" id="formcontactoapp" name="formcontactoapp">
+					<label for="mail">Ingrese su mail</label>
+					<input name="mail" id="mail" type="text" placeholder="lcondori@itris.com.ar" required>
+
+					<label for="comentarios">Comentarios:</label>
+					<textarea name="comentarios" id="comentarios" rows="8" cols="40" required>ingrese sus comentarios</textarea>
+					
+					<button class="ui-shadow ui-btn ui-corner-all" id="submit-2" type="submit">enviar!</button>
+
+					<div id="loadingmail" align="center">
+						<img src="img/ajax-loader.gif">
+					</div>	    
+					<div id="resultadomail">
+					</div>
+				</form>
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 5 -->
+		
+		
+		
+		<!-- Start 6 -->
+		<div data-role="page" id="integra27" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a class="ui-btn-active" href="#integra" ><img src="img/27.png"><br>Integra</a></li>
+		                <li><a href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+				        <form role="form" method="POST" rel="external" data-ajax="false" action="http://www.leocondori.com.ar/its/integra27.php" id="fo3" name="fo3">
+							<div class="ui-input-btn ui-btn ui-corner-all">
+								<label>Buscar actualizaciones</label>
+								<input type="submit" value="Enhanced" data-enhanced="true">
+							</div>
+						</form>					
+					
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+					<div id="loading27" align="center">
+						<img src="img/ajax-loader.gif">
+					</div>	    
+					<div id="result">
+					</div>
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 6 -->
+
+
+		<!-- Start 7 -->
+		<div data-role="page" id="integra28" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a class="ui-btn-active" href="#integra" ><img src="img/28.png"><br>Integra</a></li>
+		                <li><a href="#erp" data-icon="bars">ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+					
+				        <form role="form" method="POST" rel="external" data-ajax="false" action="http://www.leocondori.com.ar/its/integra28.php" id="int28" name="int28">
+							<div class="ui-input-btn ui-btn ui-corner-all">
+								<label>Buscar actualizaciones</label>
+								<input type="submit" value="Enhanced" data-enhanced="true">
+							</div>
+						</form>						
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+					<div id="loading28" align="center">
+						<img src="img/ajax-loader.gif">
+					</div>	
+					
+					<div id="resultado28">
+					</div>
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 7 -->	
+
+
+
+
+
+		<!-- Start 8 -->
+		<div data-role="page" id="erp27" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a href="#integra" data-icon="action">Integra</a></li>
+		                <li><a class="ui-btn-active" href="#erp" ><img src="img/27.png"><br>ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+				        <form role="form" method="POST" rel="external" data-ajax="false" action="http://www.leocondori.com.ar/its/erp27.php" id="formerp27" name="formerp27">
+							<div class="ui-input-btn ui-btn ui-corner-all">
+								<label>Buscar actualizaciones</label>
+								<input type="submit" value="Enhanced" data-enhanced="true">
+							</div>
+						</form>					
+					
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+					<div id="loadingerp27" align="center">
+						<img src="img/ajax-loader.gif">
+					</div>	    
+					<div id="resultadoerp27">
+					</div>
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 8 -->
+
+
+		<!-- Start 9 -->
+		<div data-role="page" id="erp28" data-theme="a">
+
+			<div data-role="header" align="center" data-position="fixed" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+				<div data-role="navbar">
+					<ul>
+		                <li><a href="#home" data-icon="home">Home</a></li>
+						<li><a href="#nosotros" data-icon="info">Nosotros</a></li>
+		                <li><a href="#integra" data-icon="action">Integra</a></li>
+		                <li><a class="ui-btn-active" href="#erp" ><img src="img/28.png"><br>ERP</a></li>
+		                <li><a href="#contacto" data-icon="comment">Contacto</a></li>
+        			</ul>
+					
+				        <form role="form" method="POST" rel="external" data-ajax="false" action="http://www.leocondori.com.ar/its/erp28.php" id="formerp28" name="formerp28">
+							<div class="ui-input-btn ui-btn ui-corner-all">
+								<label>Buscar actualizaciones</label>
+								<input type="submit" value="Enhanced" data-enhanced="true">
+							</div>
+						</form>						
+        		</div><!-- /navbar -->
+				
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+					<div id="loadingerp28" align="center">
+						<img src="img/ajax-loader.gif">
+					</div>	
+					
+					<div id="resultadoerp28">
+					</div>
+
+			</div><!-- /content -->
+
+			<div data-role="footer" data-position="fixed" align="center" data-theme="b">
+				<img src="img/logo-rgb-itris.png">
+			</div><!-- /footer -->
+		</div><!-- /page 9 -->			
+		
+</body>
+</html>

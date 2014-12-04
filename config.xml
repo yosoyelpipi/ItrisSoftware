@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.infoitrissoftware.app"
+    version   = "1.0.0">
+
+<name>Itris</name>
+
+<description>
+Canal de comunicación oficial de la empresa Compañía General de Software para su producto Itris software.
+</description>
+
+
+<preference name="phonegap-version" value="3.6.3" />
+
+<gap:plugin name="org.apache.cordova.device" version="0.2.12" />
+<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+<preference name="orientation" value="portrait" />
+<preference name="fullscreen" value="true" />
+<icon src="img/icon_gde.png" />
+<gap:splash src="img/splash.png" />
+<preference name="splash-screen-duration" value="5000" />
+<preference name="exit-on-suspend" value="true" />
+<preference name="android-minSdkVersion" value="5" />
+<preference name="android-targetSdkVersion" value="19" />
+<preference name="android-maxSdkVersion" value="19" />
+
+<author href="http://www.itris.com.ar" email="lcondori@itris.com.ar">
+@leocondori
+</author>
+
+</widget>
