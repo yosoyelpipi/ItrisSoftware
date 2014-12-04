@@ -48,6 +48,58 @@ primario.
 <p>Agenda gr&aacute;fica, ahora permite configurar opciones de visualizaci&oacute;n.
 </p>
 <hr>
+
+<b><h3>Version 2.7.96</h3></b>
+<h4>M&oacute;dulo: Adm. Integra</h4>
+<p><b>Novedad: 22328</b></p>
+<p>Seguridad, permite activar o no los flujos de trabajo por grupo de usuarios.
+</p>
+<hr>
+
+<h4>M&oacute;dulo: Des. Integra</h4>
+<p><b>Novedad: 22465</b></p>
+<p>Permite visualizar una clase en modo agenda gráfica.Novedad 22692
+Constrolador fiscal Hasar: se agregó la función ItsCfSetImpuertoInterno que permite
+setear impuestos internos.
+</p>
+<hr>
+
+<b><h3>Version 2.7.93</h3></b>
+<h4>M&oacute;dulo: Des. Integra</h4>
+<p><b>Novedad: 22618</b></p>
+<p>Controlador fiscal Hasar: se agrego la funcion ItsCfObtenerFechaHora que permite
+obtener la fecha y la hora del controlador fiscal.
+</p>
+<hr>
+
+<b><h3>Version 2.7.91</h3></b>
+<h4>M&oacute;dulo: Des. Integra</h4>
+<p><b>Novedad: 22217</b></p>
+<p>Se agregó un nuevo tipo de editor para los campos caracteres y numericos que permite
+ocultar el texto ingresado (campo de tipo clave)
+</p>
+<hr>
+<p><b>Novedad: 22291</b></p>
+<p>Se agregaron funciones que permite encriptar valores alfanumericos
+</p>
+<hr>
+
+<b><h3>Version 2.7.89</h3></b>
+<h4>M&oacute;dulo: Adm. Integra</h4>
+<p><b>Novedad: 16437</b></p>
+<p>Ahora en la consola hay una accion llamada "Generar log del servidor" que genera tres
+archivos:
+ItsActivity.log : Guarda informacion de la actividad entre el Servidor y el SQL. Es el
+mismo que se genera con la opcion de "Crear Log de actividades" del menu contextual
+del servidor cuando se ejecuta como aplicacion
+ItsUser.log : Guarda informacion sobre todas las maquinas conectadas al servidor y que
+estan consumiendo una licencia. Indica: servidor, ip del cliente, bases, usuario logueados,
+ultimo acceso
+ItsSocketAdmin.log : Guarda informacion de la conexiones de socket entre el servidor y
+los clientes.
+</p>
+<hr>
+
 ';
 
 ?>
